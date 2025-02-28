@@ -1,12 +1,9 @@
-import 'package:medicita/screens/appointment_page.dart';
-import 'package:medicita/screens/fav_page.dart';
-import 'package:medicita/screens/home_page.dart';
-import 'package:medicita/screens/profile_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainLayout extends StatefulWidget {
-  const MainLayout({Key? key}) : super(key: key);
+  const MainLayout({super.key});
 
   @override
   State<MainLayout> createState() => _MainLayoutState();
@@ -27,10 +24,7 @@ class _MainLayoutState extends State<MainLayout> {
           });
         }),
         children: <Widget>[
-          const HomePage(),
-          FavPage(),
-          const AppointmentPage(),
-          ProfilePage(),
+          
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

@@ -1,8 +1,7 @@
 import 'package:medicita/utils/main_layout.dart';
 import 'package:medicita/models/auth_model.dart';
 import 'package:medicita/screens/auth_page.dart';
-import 'package:medicita/screens/booking_page.dart';
-import 'package:medicita/screens/success_booked.dart';
+
 import 'package:medicita/utils/config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -52,8 +51,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (context) => const AuthPage(),
           'main': (context) => const MainLayout(),
-          'booking_page': (context) => BookingPage(),
-          'success_booking': (context) => const AppointmentBooked(),
+          
         },
       ),
     );
