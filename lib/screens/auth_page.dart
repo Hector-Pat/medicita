@@ -5,7 +5,7 @@ import 'package:medicita/screens/fav_page.dart';
 import 'package:medicita/screens/home_page.dart';
 import 'package:medicita/screens/profile_page.dart';
 import 'package:medicita/utils/text.dart'; // Importación añadida
-
+//aaaa
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
 
