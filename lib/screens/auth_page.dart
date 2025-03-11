@@ -1,118 +1,71 @@
-import 'package:medicita/utils/text.dart';
 import 'package:flutter/material.dart';
-import '../utils/config.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:medicita/screens/appointment_page.dart';
+import 'package:medicita/screens/fav_page.dart';
+import 'package:medicita/screens/home_page.dart';
+import 'package:medicita/screens/profile_page.dart';
+import 'package:medicita/utils/text.dart'; // Importación añadida
 
-class AuthPage extends StatefulWidget {
-  const AuthPage({super.key});
+class MainLayout extends StatefulWidget {
+  const MainLayout({super.key});
 
   @override
-  State<AuthPage> createState() => _AuthPageState();
+  State<MainLayout> createState() => _MainLayoutState();
 }
 
-class _AuthPageState extends State<AuthPage> {
-  bool isSignIn = true;
+class _MainLayoutState extends State<MainLayout> {
+  //variable declaration
+  int currentPage = 0;
+  final PageController _page = PageController();
+  
   @override
   Widget build(BuildContext context) {
-    Config().init(context);
-    //build login text field
     return Scaffold(
-        body: Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 15,
+      body: PageView(
+        controller: _page,
+        onPageChanged: ((value) {
+          setState(() {
+            currentPage = value;
+          });
+        }),
+        children: <Widget>[
+          const HomePage(),
+          FavPage(),
+          const AppointmentPage(),
+          ProfilePage(),
+        ],
       ),
-      child: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              AppText.enText['welcome_text']!,
-              style: const TextStyle(
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Config.spaceSmall,
-            Text(
-              isSignIn
-                  ? AppText.enText['signIn_text']!
-                  : AppText.enText['register_text']!,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Config.spaceSmall,
-            
-            Config.spaceSmall,
-            isSignIn
-                ? Center(
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        AppText.enText['forgot-password']!,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  )
-                : Container(),
-            const Spacer(),
-            Center(
-              child: Text(
-                AppText.enText['social-login']!,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.normal,
-                  color: Colors.grey.shade500,
-                ),
-              ),
-            ),
-            Config.spaceSmall,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const <Widget>[
-                
-              ],
-            ),
-            Config.spaceSmall,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  isSignIn
-                      ? AppText.enText['signUp_text']!
-                      : AppText.enText['registered_text']!,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                    color: Colors.grey.shade500,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    setState(() {
-                      isSignIn = !isSignIn;
-                    });
-                  },
-                  child: Text(
-                    isSignIn ? 'Sign Up' : 'Sign In',
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                )
-              ],
-            )
-          ],
-        ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentPage,
+        onTap: (page) {
+          setState(() {
+            currentPage = page;
+            _page.animateToPage(
+              page,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.easeInOut,
+            );
+          });
+        },
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.houseChimneyMedical),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.solidHeart),
+            label: 'Favorite',
+          ),
+          BottomNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.solidCalendarCheck),
+            label: 'Appointments',
+          ),
+          BottomNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.solidUser),
+            label: 'Profile',
+          ),
+        ],
       ),
-    ));
+    );
   }
 }
