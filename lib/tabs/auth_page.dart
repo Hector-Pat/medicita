@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:medicita/screens/appointment_page.dart';
-import 'package:medicita/screens/fav_page.dart';
-import 'package:medicita/screens/home_page.dart';
-import 'package:medicita/screens/profile_page.dart';
-import 'package:medicita/utils/text.dart'; // Importación añadida
-//aaaa
+import 'package:medicita/tabs/appointment_page.dart';
+import 'package:medicita/tabs/fav_page.dart';
+import 'package:medicita/tabs/home_page.dart';
+import 'package:medicita/tabs/profile_page.dart';
+
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
 

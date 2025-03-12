@@ -1,10 +1,10 @@
-import 'package:medicita/utils/main_layout.dart';
-import 'package:medicita/models/auth_model.dart';
-import 'package:medicita/screens/auth_page.dart';
-
-import 'package:medicita/utils/config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:medicita/utils/main_layout.dart';
+import 'package:medicita/models/auth_model.dart';
+import 'package:medicita/tabs/auth_page.dart';
+import 'package:medicita/utils/config.dart';
+
 
 void main() {
   runApp(const MyApp());
