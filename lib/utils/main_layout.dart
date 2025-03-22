@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:medicita/screens/home_page.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
@@ -23,8 +24,9 @@ class _MainLayoutState extends State<MainLayout> {
             currentPage = value;
           });
         }),
-        children: <Widget>[
-          
+        children: const <Widget>[
+          HomePage(),
+        
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -44,18 +46,12 @@ class _MainLayoutState extends State<MainLayout> {
             icon: FaIcon(FontAwesomeIcons.houseChimneyMedical),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.solidHeart),
-            label: 'Favorite',
-          ),
+          
           BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.solidCalendarCheck),
             label: 'Appointments',
           ),
-          BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.solidUser),
-            label: 'Profile',
-          ),
+          
         ],
       ),
     );

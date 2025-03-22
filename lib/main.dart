@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:medicita/utils/main_layout.dart';
 import 'package:medicita/models/auth_model.dart';
-import 'package:medicita/tabs/auth_page.dart';
+import 'package:medicita/screens/auth_page.dart';
 import 'package:medicita/utils/config.dart';
 
 
@@ -49,7 +49,10 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
+          // initial route of the app
+          //to go to login
           '/': (context) => const AuthPage(),
+          // after log in or sign out- you will go to main Layout
           'main': (context) => const MainLayout(),
           
         },

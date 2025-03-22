@@ -1,4 +1,4 @@
-//this is pre-define text for app
+//sirve para la apariencia del texto (se toma de aqui el formato de futuras tabs)
 
 class AppText {
   static final enText = {
